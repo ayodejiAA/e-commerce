@@ -29,6 +29,9 @@
     "import/no-unresolved": 1,
     "react/no-unknown-property": [2, { "ignore": ["class", "for"] }],
     "react/forbid-prop-types": 0,
-    "no-shadow": ["error", { "allow": ["req", "res", "err"] }]
+    "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
+    "import/no-named-as-default-member": 0,
+    "import/no-named-as-default": 0,
+    "react/prop-types": 0
   }
 }
