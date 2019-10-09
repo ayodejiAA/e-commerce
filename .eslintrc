@@ -3,7 +3,9 @@
   "extends": "airbnb",
   "plugins": ["react"],
   "parserOptions": {
-    "ecmaVersion": 9
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
     "browser": true,
@@ -30,9 +32,9 @@
     "react/no-unknown-property": [2, { "ignore": ["class", "for"] }],
     "react/forbid-prop-types": 0,
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
+    "react/prop-types": 0,
     "import/no-named-as-default-member": 0,
     "import/no-named-as-default": 0,
-    "react/prop-types": 0,
     "jsx-a11y/click-events-have-key-events": 0
   }
 }
