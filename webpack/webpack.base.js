@@ -10,11 +10,11 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: [/node_modules/, /joi-browser/],
+        exclude: [/node_modules/],
         use: ['babel-loader']
       },
       {
-        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf|ico)$/,
+        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf|ico)$/,
         exclude: /node_modules/,
         loader: 'file-loader',
         options: {
@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'raw-loader'
+        use: ['@svgr/webpack']
       },
       {
         test: /\.s[ac]ss$/i,
