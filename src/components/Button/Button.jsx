@@ -1,11 +1,11 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({ children, handleClick, isGoogleSignIn }) => (
+const Button = ({ children, onClick, isGoogleSignIn }) => (
   <button
     className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
     type="button"
-    onClick={handleClick}
+    onClick={onClick}
   >
     {children}
   </button>
