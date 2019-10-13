@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { auth, signInWithGoogle } from "../../firebase/firebase";
-import FormInput from "../FormInput/FormInput";
-import SubmitButton from "../Button/SubmitButton";
-import Button from "../Button/Button";
-import "./SignIn.scss";
+import React, { Component } from 'react';
+import { auth, signInWithGoogle } from '../../firebase/firebase';
+import FormInput from '../FormInput/FormInput';
+import SubmitButton from '../Button/SubmitButton';
+import Button from '../Button/Button';
+import './SignIn.scss';
 
 class SignIn extends Component {
   state = {
-    email: "",
-    password: ""
+    email: '',
+    password: ''
   };
 
   handleSubmit = async event => {
@@ -16,7 +16,7 @@ class SignIn extends Component {
     const { email, password } = this.state;
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: "", password: "" });
+      this.setState({ email: '', password: '' });
     } catch (error) {
       console.error(error);
     }
