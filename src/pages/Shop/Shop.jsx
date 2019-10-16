@@ -13,8 +13,12 @@ class Shop extends Component {
     } = this;
     return (
       <div className="shop-page">
-        {collections.map(({ id, ...collectionProps }) => (
-          <CollectionPreview key={id} {...collectionProps} />
+        {collections.map(({ id, ...collection }) => (
+          <CollectionPreview
+            key={id}
+            title={collection.title}
+            items={collection.items}
+          />
         ))}
       </div>
     );

@@ -11,24 +11,20 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import Shop from './pages/Shop/Shop';
 import SignInAndSignUp from './pages/SignInAndSignUp/SignInAndSignUp';
-import setCurrentUser from './redux/user/userActions';
+import { setCurrentUserAction } from './redux/user/userActions';
 import './styles/index.scss';
 
 class App extends Component {
-  state = {
-    currentUser: null
-  };
-
   unsubscribeFromAuth = null;
 
   componentDidMount = () => {
     const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async authUser => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (authUser) => {
       if (authUser) {
         const userRef = await createUserProfileDocument(authUser);
 
-        userRef.onSnapshot(snapshot => {
+        userRef.onSnapshot((snapshot) => {
           setCurrentUser({
             id: snapshot.id,
             ...snapshot.data()
@@ -45,6 +41,7 @@ class App extends Component {
   };
 
   render() {
+    const { currentUser } = this.props;
     return (
       <Router>
         <Header />
@@ -55,7 +52,7 @@ class App extends Component {
             exact
             path="/signin"
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
+              currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
             }
           />
         </Switch>
@@ -68,8 +65,8 @@ const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUserAction(user))
 });
 
 export default connect(

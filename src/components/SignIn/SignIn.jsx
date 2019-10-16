@@ -11,7 +11,7 @@ class SignIn extends Component {
     password: ''
   };
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
     try {
@@ -22,7 +22,7 @@ class SignIn extends Component {
     }
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const {
       target: { name, value }
     } = event;
@@ -30,6 +30,7 @@ class SignIn extends Component {
   };
 
   render() {
+    const { email, password } = this.state;
     return (
       <div className="sign-in">
         <h2 className="title">I already have an acoount</h2>
@@ -39,7 +40,7 @@ class SignIn extends Component {
           <FormInput
             type="email"
             name="email"
-            value={this.state.email}
+            value={email}
             onChange={this.handleChange}
             label="Email"
             required
@@ -48,7 +49,7 @@ class SignIn extends Component {
           <FormInput
             type="password"
             name="password"
-            value={this.state.password}
+            value={password}
             onChange={this.handleChange}
             label="Password"
             required

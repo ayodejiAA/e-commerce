@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { auth, createUserProfileDocument } from "../../firebase/firebase";
-import SubmitButton from "../Button/SubmitButton";
-import FormInput from "../FormInput/FormInput";
-import "./SignUp.scss";
+import React, { Component } from 'react';
+import { auth, createUserProfileDocument } from '../../firebase/firebase';
+import SubmitButton from '../Button/SubmitButton';
+import FormInput from '../FormInput/FormInput';
+import './SignUp.scss';
 
 class SignUp extends Component {
   state = {
-    displayName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const {
       target: { value, name }
     } = event;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const {
       state: { displayName, email, password, confirmPassword }
@@ -35,10 +35,10 @@ class SignUp extends Component {
       );
       await createUserProfileDocument(user, { displayName });
       this.setState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
       });
     } catch (error) {
       console.error(error);
