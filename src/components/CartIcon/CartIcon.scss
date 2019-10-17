@@ -7,9 +7,9 @@
   justify-content: center;
   cursor: pointer;
 
-  // &:focus {
-  //   outline: 0
-  // };
+  &:focus {
+    outline: 0
+  };
 
   .shopping-icon {
     width: 24px;

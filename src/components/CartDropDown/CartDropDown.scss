@@ -8,14 +8,14 @@
   border: 1px solid black;
   background-color: white;
   top: 90px;
-  right: 80px;
+  right: 87px;
   z-index: 5;
 
   .cart-items {
     height: 240px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
   }
 
   button {
