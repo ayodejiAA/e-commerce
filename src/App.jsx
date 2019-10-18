@@ -10,8 +10,10 @@ import { auth, createUserProfileDocument } from './firebase/firebase';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import Shop from './pages/Shop/Shop';
+import Checkout from './pages/Checkout/Checkout';
 import SignInAndSignUp from './pages/SignInAndSignUp/SignInAndSignUp';
 import { setCurrentUserAction } from './redux/user/userActions';
+import { selectCurrentUser } from './redux/user/userSelectors';
 import './styles/index.scss';
 
 class App extends Component {
@@ -55,14 +57,15 @@ class App extends Component {
               currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
             }
           />
+          <Route exact path="/checkout" component={Checkout} />
         </Switch>
       </Router>
     );
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
