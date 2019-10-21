@@ -3,14 +3,14 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: 'AIzaSyAfX6XK_o9hti6HFZ2hjQa4l58J-uopwLw',
-  authDomain: 'e-commerce-a2ab7.firebaseapp.com',
-  databaseURL: 'https://e-commerce-a2ab7.firebaseio.com',
-  projectId: 'e-commerce-a2ab7',
-  storageBucket: 'e-commerce-a2ab7.appspot.com',
-  messagingSenderId: '424770424348',
-  appId: '1:424770424348:web:8545436d84c83f0b7dd9d9',
-  measurementId: 'G-K591QTXCE6'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MSG_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEAS_ID
 };
 
 firebase.initializeApp(config);

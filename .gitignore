@@ -3,3 +3,6 @@ node_modules
 
 #Production Build Folder
 build
+
+#.env file
+.env

@@ -1,6 +1,10 @@
+const webpack = require('webpack');
 const path = require('path');
+const dotenv = require('dotenv');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+const env = Object.keys(dotenv.config().parsed);
 
 module.exports = {
   target: 'web',
@@ -50,7 +54,8 @@ module.exports = {
         minifyJS: true,
         minifyCSS: true
       }
-    })
+    }),
+    new webpack.EnvironmentPlugin(env)
   ],
 
   output: {

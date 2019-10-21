@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { auth } from '../../firebase/firebase';
 import { createStructuredSelector } from 'reselect';
+import { auth } from '../../firebase/firebase';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropDown from '../CartDropDown/CartDropDown';
 import Logo from '../../assets/images/crown.svg';
