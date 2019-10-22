@@ -8,7 +8,7 @@ const env = Object.keys(dotenv.config().parsed);
 
 module.exports = {
   target: 'web',
-  entry: path.join(__dirname, '../src/index.js'),
+  entry:{ index: './src/index.js'},
 
   module: {
     rules: [
