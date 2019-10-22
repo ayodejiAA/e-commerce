@@ -1,4 +1,3 @@
-require('dotenv').config();
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const baseConfig = require('./webpack.base');

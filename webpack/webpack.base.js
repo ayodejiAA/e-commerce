@@ -4,11 +4,11 @@ const dotenv = require('dotenv');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-const env = Object.keys(dotenv.config().parsed);
+dotenv.config();
 
 module.exports = {
   target: 'web',
-  entry:{ index: './src/index.js'},
+  entry: { index: './src/index.js' },
 
   module: {
     rules: [
@@ -55,7 +55,7 @@ module.exports = {
         minifyCSS: true
       }
     }),
-    new webpack.EnvironmentPlugin(env)
+    new webpack.EnvironmentPlugin(Object.keys(process.env))
   ],
 
   output: {
