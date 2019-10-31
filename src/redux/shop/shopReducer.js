@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case shopActionTypes.FETCH_COLLECTIONS:
+    case shopActionTypes.FETCH_COLLECTIONS_START:
       return {
         ...state,
         isFetching: true
