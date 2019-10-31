@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import { auth, signInWithGoogle } from '../../firebase/firebase';
+import { connect } from 'react-redux';
+
+// import { auth, signInWithGoogle } from '../../firebase/firebase';
 import FormInput from '../FormInput/FormInput';
 import SubmitButton from '../Button/SubmitButton';
 import Button from '../Button/Button';
+
+import {
+  googleSignInStart,
+  emailSignInStart
+} from '../../redux/user/userActions';
+
 import './SignIn.scss';
 
 class SignIn extends Component {
@@ -14,12 +22,9 @@ class SignIn extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
-    } catch (error) {
-      console.error(error);
-    }
+    const { signInWithEmailAndPassword } = this.props;
+
+    signInWithEmailAndPassword({ email, password });
   };
 
   handleChange = (event) => {
@@ -31,6 +36,7 @@ class SignIn extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { signInWithGoogle } = this.props;
     return (
       <div className="sign-in">
         <h2 className="title">I already have an acoount</h2>
@@ -66,4 +72,12 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = {
+  signInWithGoogle: googleSignInStart,
+  signInWithEmailAndPassword: emailSignInStart
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignIn);
