@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -18,33 +18,29 @@ import { selectCurrentUser } from './redux/user/userSelectors';
 
 import './styles/index.scss';
 
-class App extends Component {
-  componentDidMount = () => {
-    const { checkUserSession } = this.props;
+const App = ({ checkUserSession, currentUser }) => {
+  useEffect(() => {
     checkUserSession();
-  };
+  }, [checkUserSession]);
 
-  render() {
-    const { currentUser } = this.props;
-    return (
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={Shop} />
-          <Route
-            exact
-            path="/signin"
-            render={() =>
-              currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
-            }
-          />
-          <Route exact path="/checkout" component={Checkout} />
-        </Switch>
-      </Router>
-    );
-  }
-}
+  return (
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/shop" component={Shop} />
+        <Route
+          exact
+          path="/signin"
+          render={() =>
+            currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
+          }
+        />
+        <Route exact path="/checkout" component={Checkout} />
+      </Switch>
+    </Router>
+  );
+};
 
 const mapStateToProps = (state) => ({
   currentUser: selectCurrentUser(state)
