@@ -1,17 +1,22 @@
 {
   "name": "e-commerce",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/ayodejiAA/e-commerce.git",
   "author": "ayodejiAA <afolabiayodejia@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
-    "prebuild": "rm -rf ./build",
-    "build": "webpack --config ./webpack/webpack.prod.js",
-    "dev": "webpack-dev-server --config ./webpack/webpack.dev.js --color"
+    "start": "node ./server/build/server.js",
+    "prebuild": "rm -rf ./build && rm -rf ./server/build",
+    "build": "yarn server && yarn client",
+    "client": "webpack --config ./webpack/webpack.prod.js",
+    "server": "babel ./server -d ./server/build",
+    "dev": "concurrently --kill-others-on-fail \"yarn dev-server\" \"yarn dev-client\"",
+    "dev-client": "webpack-dev-server --config ./webpack/webpack.dev.js --color",
+    "dev-server": "nodemon --exec babel-node ./server/server.js"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^7.2.0",
     "react": "^16.10.2",
@@ -23,10 +28,13 @@
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "stripe": "^7.11.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.3",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
@@ -34,6 +42,7 @@
     "@svgr/webpack": "^4.3.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "concurrently": "^5.0.0",
     "css-loader": "^3.2.0",
     "dotenv": "^8.2.0",
     "eslint": "6.1.0",
@@ -46,6 +55,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
+    "nodemon": "^1.19.4",
     "redux-logger": "^3.0.6",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",

@@ -16,6 +16,13 @@ module.exports = merge(baseConfig, {
     historyApiFallback: true,
     watchOptions: {
       ignored: /node_modules/
+    },
+    proxy: {
+      '/api/v1/**': {
+        target: 'http://localhost:2019',
+        secure: false,
+        changeOrigin: true
+      }
     }
   },
 
