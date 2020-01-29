@@ -16,6 +16,7 @@ const Directory = ({ sections }) => (
         slug={section.slug}
       />
     ))}
+    <div className="blur" />
   </div>
 );
 

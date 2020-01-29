@@ -1,5 +1,9 @@
 .homepage {
+  width: 100%;
+  min-height: 530px;
+  background-position: center;
+  background-size: cover;
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 }

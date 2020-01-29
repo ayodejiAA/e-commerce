@@ -1,6 +1,11 @@
 .directory-menu {
-  width: 100%;
+  width: 80%;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.3);
+
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
+
